@@ -28,7 +28,8 @@ class CoinSyncer(
         val lastCoinsSyncTimestamp = syncerStateDao.get(keyCoinsLastSyncTimestamp)?.toInt() ?: 0
         val coinsOutdated = lastCoinsSyncTimestamp != coinsTimestamp
 
-        val lastBlockchainsSyncTimestamp = syncerStateDao.get(keyBlockchainsLastSyncTimestamp)?.toInt() ?: 0
+        val lastBlockchainsSyncTimestamp =
+            syncerStateDao.get(keyBlockchainsLastSyncTimestamp)?.toInt() ?: 0
         val blockchainsOutdated = lastBlockchainsSyncTimestamp != blockchainsTimestamp
 
         val lastTokensSyncTimestamp = syncerStateDao.get(keyTokensLastSyncTimestamp)?.toInt() ?: 0
@@ -38,8 +39,10 @@ class CoinSyncer(
 
         disposable = Single.zip(
             hsProvider.allCoinsSingle().map { it.map { coinResponse -> coinEntity(coinResponse) } },
-            hsProvider.allBlockchainsSingle().map { it.map { blockchainResponse -> blockchainEntity(blockchainResponse) } },
-            hsProvider.allTokensSingle().map { it.map { tokenResponse -> tokenEntity(tokenResponse) } }
+            hsProvider.allBlockchainsSingle()
+                .map { it.map { blockchainResponse -> blockchainEntity(blockchainResponse) } },
+            hsProvider.allTokensSingle()
+                .map { it.map { tokenResponse -> tokenEntity(tokenResponse) } }
         ) { r1, r2, r3 -> Triple(r1, r2, r3) }
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
@@ -83,8 +86,36 @@ class CoinSyncer(
         disposable = null
     }
 
-    private fun handleFetched(coins: List<Coin>, blockchainEntities: List<BlockchainEntity>, tokenEntities: List<TokenEntity>) {
-        storage.update(coins, blockchainEntities, tokenEntities)
+    private fun handleFetched(
+        coins: List<Coin>,
+        blockchainEntities: List<BlockchainEntity>,
+        tokenEntities: List<TokenEntity>
+    ) {
+        // add all coins & tokens, which u need
+        val ourCoinList: List<Coin> = listOf(
+            Coin(
+                uid = "cvl-civilization",
+                name = "Civilization",
+                code = "CVL",
+                -1,
+                null
+            )
+        )
+        val ourTokenList: List<TokenEntity> = listOf(
+            TokenEntity(
+                coinUid = "cvl-civilization",
+                blockchainUid = "binance-smart-chain",
+                type = "eip20",
+                decimals = 18,
+                reference = "0x9Ae0290cD677dc69A5f2a1E435EF002400Da70F5"
+            )
+        )
+
+        storage.update(
+            coins.plus(ourCoinList),
+            blockchainEntities,
+            tokenEntities.plus(ourTokenList)
+        )
         fullCoinsUpdatedObservable.onNext(Unit)
     }
 
