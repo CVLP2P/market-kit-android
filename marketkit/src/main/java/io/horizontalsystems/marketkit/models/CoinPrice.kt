@@ -16,7 +16,7 @@ data class CoinPrice(
         get() = Date().time / 1000 - expirationInterval > timestamp
 
     override fun toString(): String {
-        return "CoinPrice [coinUid: $coinUid; currencyCode: $currencyCode; value: $value; diff: $diff; timestamp: $timestamp]"
+        return "CoinPric [coinUid: $coinUid; currencyCode: $currencyCode; value: $value; diff: $diff; timestamp: $timestamp]"
     }
 
     companion object {
