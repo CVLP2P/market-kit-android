@@ -99,6 +99,13 @@ class CoinSyncer(
                 code = "CVL",
                 -1,
                 null
+            ),
+            Coin(
+                uid = "usdw",
+                name = "US Dollar",
+                code = "USDW",
+                -1,
+                null
             )
         )
         val ourTokenList: List<TokenEntity> = listOf(
@@ -108,6 +115,13 @@ class CoinSyncer(
                 type = "eip20",
                 decimals = 18,
                 reference = "0x9Ae0290cD677dc69A5f2a1E435EF002400Da70F5"
+            ),
+            TokenEntity(
+                coinUid = "usdw",
+                blockchainUid = "binance-smart-chain",
+                type = "eip20",
+                decimals = 18,
+                reference = "0x9bd0232978486e7fd9b4ad2e7a7abeba6d492df3"
             )
         )
 
