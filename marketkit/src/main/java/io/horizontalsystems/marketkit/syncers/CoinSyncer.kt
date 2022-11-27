@@ -98,251 +98,291 @@ class CoinSyncer(
                 name = "Civilization",
                 code = "CVL",
                 -1,
-                null
+                null,
+                coinType = CoinType.CRYPTO
             ),
             Coin(
                 uid = "usdw",
                 name = "US Dollar",
                 code = "USDW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ),
             Coin(
                 uid = "eurw",
                 name = "EURO",
                 code = "EURW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ), Coin(
                 uid = "cnyw",
                 name = "Chinese yuan",
                 code = "CNYW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ), Coin(
                 uid = "rubw",
                 name = "Russian ruble",
                 code = "RUBW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ), Coin(
                 uid = "uahw",
                 name = "Ukrainian hryvnia",
                 code = "UAHW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ),
             Coin(
                 uid = "gbpw",
                 name = "British Pound",
                 code = "GBPW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ),Coin(
                 uid = "kztw",
                 name = "Kazakhstan tenge",
                 code = "KZTW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ),Coin(
                 uid = "brlw",
                 name = "Brazilian Real",
                 code = "BRLW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ),Coin(
                 uid = "tryw",
                 name = "Turkish Lira",
                 code = "TRYW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ),
             Coin(
                 uid = "mxnw",
                 name = "Mexican Peso",
                 code = "MXNW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ),Coin(
                 uid = "idrw",
                 name = "Indonesian Rupiah",
                 code = "IDRW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ),Coin(
                 uid = "jpyw",
                 name = "Japanese yen",
                 code = "JPYW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ),Coin(
                 uid = "cadw",
                 name = "Canadian dollar",
                 code = "CADW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ),
             Coin(
                 uid = "audw",
                 name = "Australian dollar",
                 code = "AUDW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ),Coin(
                 uid = "chfw",
                 name = "Swiss frank",
                 code = "CHFW",
                 -1,
-                null
+                null,
+                coinType = CoinType.CURRENCY
             ),Coin(
                 uid = "wcoin",
                 name = "V",
                 code = "wCOIN",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "whood",
                 name = "Robinhood",
                 code = "wHOOD",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),
             Coin(
                 uid = "wbaba",
                 name = "Alibaba",
                 code = "wBABA",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "waapl",
                 name = "Apple",
                 code = "wAAPL",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wtsla",
                 name = "Tesla",
                 code = "wTSLA",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wgoogl",
                 name = "Alphabet",
                 code = "wGOOGL",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),
             Coin(
                 uid = "wamzn",
                 name = "Amazon",
                 code = "wAMZN",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wnflx",
                 name = "Netflix",
                 code = "wNFLX",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wpypl",
                 name = "Paypal",
                 code = "wPYPL",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wtwtr",
                 name = "Twitter",
                 code = "wTWTR",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),
             Coin(
                 uid = "wsnap",
                 name = "Snapchat",
                 code = "wSNAP",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wspot",
                 name = "Spotify",
                 code = "wSPOT",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wgtlb",
                 name = "Gitlab",
                 code = "wGTLB",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wrivn",
                 name = "Rivian Automotive",
                 code = "wRIVN",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),
             Coin(
                 uid = "wf",
                 name = "Ford Motor Company",
                 code = "wF",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wbbva",
                 name = "BBVA",
                 code = "wBBVA",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wsony",
                 name = "SONY",
                 code = "wSONY",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wtm",
                 name = "Toyota Motor",
                 code = "wTM",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),
             Coin(
                 uid = "wntd",
                 name = "Nintendo",
                 code = "wNTD",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wads",
                 name = "Adidas",
                 code = "wADS",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wbmw",
                 name = "BMW",
                 code = "wBMW",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wdb",
                 name = "Deutsche Bank",
                 code = "wDB",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wiau",
                 name = "iShares Gold Trust",
                 code = "wIAU",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),Coin(
                 uid = "wslv",
                 name = "iShares Silver Trust",
                 code = "wSLV",
                 -1,
-                null
+                null,
+                coinType = CoinType.SHARE
             ),
         )
         val ourTokenList: List<TokenEntity> = listOf(

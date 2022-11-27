@@ -3,6 +3,7 @@ package io.horizontalsystems.marketkit.storage
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import io.horizontalsystems.marketkit.models.CoinType
 import io.horizontalsystems.marketkit.models.GlobalMarketPoint
 import io.horizontalsystems.marketkit.models.HsPeriodType
 import java.math.BigDecimal
@@ -48,5 +49,15 @@ class DatabaseTypeConverters {
     @TypeConverter
     fun toGlobalMarketPointList(value: String): List<GlobalMarketPoint> {
         return gson.fromJson(value, object : TypeToken<List<GlobalMarketPoint>>() {}.type)
+    }
+
+    @TypeConverter
+    fun fromCoinType(coinType: CoinType): Int {
+        return coinType.value
+    }
+
+    @TypeConverter
+    fun toCoinType(value: Int): CoinType {
+        return CoinType.values().first { it.value == value }
     }
 }
