@@ -46,15 +46,17 @@ abstract class MarketDatabase : RoomDatabase() {
         private var INSTANCE: MarketDatabase? = null
 
         fun getInstance(context: Context): MarketDatabase {
-            return synchronized(this) {
-                buildDatabase(context).also { INSTANCE = it }
+            return INSTANCE ?: synchronized(this) {
+                INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
             }
-//            return INSTANCE ?: synchronized(this) {
-//                INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
-//            }
         }
 
         private fun buildDatabase(context: Context): MarketDatabase {
+            try {
+                context.deleteDatabase("marketKitDatabase");
+            } catch (e: Exception) {
+                print(e.message)
+            }
             val db = Room.databaseBuilder(context, MarketDatabase::class.java, "marketKitDatabase")
                 .addCallback(object : Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
@@ -77,7 +79,6 @@ abstract class MarketDatabase : RoomDatabase() {
 
             // force db creation
             db.query("select 1", null)
-
             return db
         }
 
@@ -92,6 +93,7 @@ abstract class MarketDatabase : RoomDatabase() {
                     db.execSQL(insertStmt)
                     insertCount++
                 }
+                print("test")
             } catch (error: Exception) {
                 logger.warning("Error in loadInitialCoins(): ${error.message ?: error.javaClass.simpleName}")
             }
