@@ -98,7 +98,7 @@ class CoinSyncer(
                 name = "Civilization",
                 code = "CVL",
                 -1,
-                coinGeckoId = "cvl-civilization",
+                coinGeckoId = "civilization-network",
                 coinType = CoinType.CRYPTO
             ),
             Coin(

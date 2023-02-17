@@ -1201,7 +1201,7 @@ INSERT INTO BlockchainEntity VALUES('step-network','step-network',NULL);
 INSERT INTO BlockchainEntity VALUES('aptos','Aptos',NULL);
 INSERT INTO BlockchainEntity VALUES('elrond','Elrond',NULL);
 
-INSERT INTO Coin VALUES('cvl-civilization','Civilization','CVL',-1,'cvl-civilization', 0);
+INSERT INTO Coin VALUES('cvl-civilization','Civilization','CVL',-1,'civilization-network', 0);
 INSERT INTO Coin VALUES('usdw','US Dollar','USDW',-1,'cvl-usdw', 1);
 INSERT INTO Coin VALUES('eurw','EURO','EURW',-1,'cvl-eurw', 1);
 INSERT INTO Coin VALUES('cnyw','Chinese yuan','CNYW',-1,'cvl-cnyw', 1);
