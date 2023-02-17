@@ -52,10 +52,17 @@ abstract class MarketDatabase : RoomDatabase() {
         }
 
         private fun buildDatabase(context: Context): MarketDatabase {
-            try {
-                context.deleteDatabase("marketKitDatabase");
-            } catch (e: Exception) {
-                print(e.message)
+            val shared = context.getSharedPreferences("storage_from_db", Context.MODE_PRIVATE);
+            if(shared.getBoolean("no_delete", true)) {
+                try {
+                    context.deleteDatabase("marketKitDatabase");
+                    with (shared.edit()) {
+                        putBoolean("no_delete", false)
+                        apply()
+                    }
+                } catch (e: Exception) {
+                    print(e.message)
+                }
             }
             val db = Room.databaseBuilder(context, MarketDatabase::class.java, "marketKitDatabase")
                 .addCallback(object : Callback() {
