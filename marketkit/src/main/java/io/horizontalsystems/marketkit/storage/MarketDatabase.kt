@@ -44,9 +44,12 @@ abstract class MarketDatabase : RoomDatabase() {
         private var INSTANCE: MarketDatabase? = null
 
         fun getInstance(context: Context): MarketDatabase {
-            return INSTANCE ?: synchronized(this) {
-                INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
+            return synchronized(this) {
+                buildDatabase(context).also { INSTANCE = it }
             }
+//            return INSTANCE ?: synchronized(this) {
+//                INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
+//            }
         }
 
         private fun buildDatabase(context: Context): MarketDatabase {
