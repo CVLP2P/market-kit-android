@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit
 
 class MainViewModel(private val marketKit: MarketKit) : ViewModel() {
     private val disposables = CompositeDisposable()
+    private val authToken = ""
 
     fun runAudits() {
         val uniswapAddresses = listOf(
@@ -452,7 +453,7 @@ class MainViewModel(private val marketKit: MarketKit) : ViewModel() {
 
     fun runAnalyticsPreview() {
         val chain = "ethereum"
-        marketKit.analyticsPreviewSingle(chain)
+        marketKit.analyticsPreviewSingle(chain, listOf())
             .subscribeOn(Schedulers.io())
             .subscribe({ data ->
                 Log.e("AAA", "cexVolume rank30d: ${data.cexVolume?.rank30d} points: ${data.cexVolume?.points} dexVolume rank30d: ${data.dexVolume?.rank30d} points: ${data.dexVolume?.points} ")
@@ -465,9 +466,9 @@ class MainViewModel(private val marketKit: MarketKit) : ViewModel() {
     }
 
     fun runAnalytics() {
-        val chain = "ethereum"
+        val coinUid = "ethereum"
         val currencyCode = "usd"
-        marketKit.analyticsSingle(chain, currencyCode)
+        marketKit.analyticsSingle(authToken, coinUid, currencyCode)
             .subscribeOn(Schedulers.io())
             .subscribe({ data ->
                 Log.e("AAA", "cexVolume rank30d: ${data.cexVolume?.rank30d} points.size: ${data.cexVolume?.points?.size} transactions volume30d: ${data.transactions?.volume30d} points.size: ${data.transactions?.points?.size} ")
@@ -482,7 +483,7 @@ class MainViewModel(private val marketKit: MarketKit) : ViewModel() {
     fun runTokenHolders() {
         val coinUid = "uniswap"
         val blockchainUid = "ethereum"
-        marketKit.tokenHoldersSingle(coinUid, blockchainUid)
+        marketKit.tokenHoldersSingle(authToken, coinUid, blockchainUid)
             .subscribeOn(Schedulers.io())
             .subscribe({ data ->
                 Log.e("AAA", "runTokenHolders count: ${data.count} url: ${data.holdersUrl} holders.size: ${data.topHolders.size} ")
@@ -498,7 +499,7 @@ class MainViewModel(private val marketKit: MarketKit) : ViewModel() {
 
     fun runDexLiquidityRanks() {
         val currencyCode = "usd"
-        marketKit.dexLiquidityRanksSingle(currencyCode)
+        marketKit.dexLiquidityRanksSingle(authToken, currencyCode)
             .subscribeOn(Schedulers.io())
             .subscribe({ data ->
                 data.forEach { item ->
@@ -513,7 +514,7 @@ class MainViewModel(private val marketKit: MarketKit) : ViewModel() {
 
     fun runRevenueRanks() {
         val currencyCode = "usd"
-        marketKit.revenueRanksSingle(currencyCode)
+        marketKit.revenueRanksSingle(authToken, currencyCode)
             .subscribeOn(Schedulers.io())
             .subscribe({ data ->
                 data.forEach { item ->
@@ -524,6 +525,24 @@ class MainViewModel(private val marketKit: MarketKit) : ViewModel() {
                 }
             }, {
                 Log.e("AAA", "runRevenueRanks error", it)
+            }).let {
+                disposables.add(it)
+            }
+    }
+
+    fun runHoldersRanks() {
+        val currencyCode = "usd"
+        marketKit.holderRanksSingle(authToken, currencyCode)
+            .subscribeOn(Schedulers.io())
+            .subscribe({ data ->
+                data.forEach { item ->
+                    Log.e(
+                        "AAA",
+                        "runHoldersRanks value1d: value: ${item.value} uid: ${item.uid} "
+                    )
+                }
+            }, {
+                Log.e("AAA", "runHoldersRanks error", it)
             }).let {
                 disposables.add(it)
             }
